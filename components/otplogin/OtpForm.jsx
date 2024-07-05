@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import CustomCheckBox from "../UI/CustomCheckbox";
 
 export default function OtpForm() {
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [isWhatsappNumber, setIsWhatsappNumber] = useState(false);
-  const [otp, setOtp] = useState();
-  const handleChange = (number, index) => {
-    let newcode;
-    newcode[index] = number;
-    // setOtp(newcode.join("
-    //   "));
+  const [otp, setOtp] = useState(["", "", "", ""]);
+  const handleOtpChange = (index, value) => {
+    const newOtp = [...otp];
+    newOtp[index] = value;
+    setOtp(newOtp);
   };
   const HandleIsWhatsappNumber = () => {
     setIsWhatsappNumber(!isWhatsappNumber);
@@ -47,6 +47,9 @@ export default function OtpForm() {
               flex: 1,
             }}
             placeholder="Enter your mobile number "
+            onChangeText={(val) => {
+              setPhoneNumber(val);
+            }}
           ></TextInput>
 
           <TouchableOpacity
@@ -93,19 +96,21 @@ export default function OtpForm() {
             marginVertical: 10,
           }}
         >
-          {[...Array(4)].map((a, i) => {
+          {otp.map((a, i) => {
             return (
               <TextInput
                 key={i}
+                keyboardType="number-pad"
                 style={{
                   borderWidth: 2,
                   borderColor: "#4A90E2",
                   paddingHorizontal: 10,
                   paddingVertical: 5,
                   borderRadius: 15,
+                  textAlign: "center",
                 }}
                 onChangeText={(text) => {
-                  handleChange(text, i);
+                  handleOtpChange(index, value);
                 }}
                 maxLength={1}
               ></TextInput>

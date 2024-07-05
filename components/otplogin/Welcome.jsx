@@ -1,6 +1,5 @@
 import { View, Text, Image } from "react-native";
 import React from "react";
-import logo from "../../assets/image.png";
 
 export default function Welcome() {
   return (
@@ -16,30 +15,32 @@ export default function Welcome() {
         marginTop: 40,
       }}
     >
-      <Image source={logo} style={{ width: 75, height: 80 }}></Image>
+      <Image
+        source={require("../../assets/Logo_Dummy.png")}
+        resizeMode="contain"
+        style={{ width: 75, height: 80 }}
+      ></Image>
       <View style={{ display: "flex" }}>
-        <View>
-          <Text
-            style={{
-              color: "#1D71D4",
-              fontWeight: "800",
-              fontSize: 24,
-              fontFamily: "Jost_400Regular",
-            }}
-          >
-            Welcome to
-          </Text>
-          <Text
-            style={{
-              color: "#1D71D4",
-              fontWeight: "800",
-              fontSize: 16,
-              textAlign: "center",
-            }}
-          >
-            iLaqa
-          </Text>
-        </View>
+        <Text
+          style={{
+            color: "#1D71D4",
+            fontWeight: "800",
+            fontSize: 24,
+            fontFamily: "Jost_400Regular",
+          }}
+        >
+          Welcome to
+        </Text>
+        <Text
+          style={{
+            color: "#1D71D4",
+            fontWeight: "800",
+            fontSize: 16,
+            textAlign: "center",
+          }}
+        >
+          iLaqa
+        </Text>
       </View>
     </View>
   );
